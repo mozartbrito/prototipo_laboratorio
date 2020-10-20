@@ -10,10 +10,19 @@ $produtos = [
 	['nome' => 'Web CAM', 'preco' => '39', 'categoria' => 'Eletronicos', 'codigo' => '545444']
 ];
 
-for ($i = 0; $i < 6; $i++) {
-	echo $produtos[$i]['nome'];
-	echo '<br>';
+/*for($i = 0; $i < 6; $i++){
+$texto = 'O(a) '.$produtos[$i]['nome'].' possui o código ';
+$texto .= $produtos[$i]['codigo'] . ' e seu valor é: R$ ' . number_format($produtos[$i]['preco'], 2, ',','.');
+echo $texto . "<br>";
+}*/
+
+/*for($i = 0; $i < 6; $i++) {
+echo $produtos[$i]['nome'];
+echo '<br>';
 }
+
+exit;
+ */
 
 include_once ('layout/header.php');
 include_once ('layout/menu.php');
@@ -37,7 +46,7 @@ include_once ('layout/sidebar.php');
             <th>#</th>
             <th>Nome</th>
             <th>Categoria</th>
-            <th>Data de Compra</th>
+            <th>Preço</th>
             <th>Código</th>
             <th class="acao">Ação</th>
           </tr>
@@ -46,7 +55,7 @@ include_once ('layout/sidebar.php');
             <td><?=$i?></td>
             <td>Nome</td>
             <td>Categoria</td>
-            <td>Data de Compra</td>
+            <td>Preço</td>
             <td>Código</td>
             <td>
               <a href="#" class="btn btn-success">
