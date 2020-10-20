@@ -44,19 +44,19 @@ include_once('layout/sidebar.php');
       <table class="table table-striped table-hover">
           <tr>
             <th>#</th>
+            <th>Código</th>
             <th>Nome</th>
             <th>Categoria</th>
             <th>Preço</th>
-            <th>Código</th>
             <th class="acao">Ação</th>
           </tr>
-          <?php for($i = 1; $i <= 10; $i++): ?>
+          <?php for($i = 0; $i < count($produtos); $i++): ?>
           <tr>
-            <td><?= $i ?></td>
-            <td>Nome</td>
-            <td>Categoria</td>
-            <td>Preço</td>
-            <td>Código</td>
+            <td><?= $i + 1 ?></td>
+            <td><?php echo $produtos[$i]['codigo']; ?></td>
+            <td><?php echo $produtos[$i]['nome']; ?></td>
+            <td><?php echo $produtos[$i]['categoria'] ?></td>
+            <td><?php echo number_format($produtos[$i]['preco'], 2,',','.'); ?></td>
             <td>
               <a href="#" class="btn btn-success">
                 <i class="fas fa-eye"></i>
