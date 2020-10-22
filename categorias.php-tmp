@@ -8,6 +8,10 @@ $bd      = 'laborus';
 
 $conexao = mysqli_connect($host, $usuario, $senha, $bd);
 
+$consulta = mysqli_query($conexao, "SELECT * FROM categoria");
+
+$categorias = mysqli_fetch_assoc($consulta);
+print_r($categorias);
 exit;
 include_once ('layout/header.php');
 include_once ('layout/menu.php');
