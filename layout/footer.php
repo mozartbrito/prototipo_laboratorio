@@ -18,11 +18,12 @@
           }, 300);
       });
 
-      setTimeout(function(){
-        $('#alert-mensagem').fadeOut();
-        window.location.href =  window.location.href.split("?")[0];
-      }, 5000);
-     
+      <?php if(isset($_GET['mensagem'])): ?>
+        setTimeout(function(){
+          $('#alert-mensagem').fadeOut();
+          window.location.href =  window.location.href.split("?")[0];
+        }, 5000);
+     <?php endif; ?>
     </script>
   </body>
 </html>
