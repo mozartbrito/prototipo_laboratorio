@@ -1,7 +1,9 @@
+
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\trazo\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 54
         </div>
 
         </div>
-        
+
         </div>
 
       </div>
@@ -22,7 +24,7 @@
         $('#alert-mensagem').fadeOut();
         window.location.href =  window.location.href.split("?")[0];
       }, 5000);
-     
+
     </script>
   </body>
 </html>
