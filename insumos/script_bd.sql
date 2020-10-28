@@ -93,8 +93,8 @@ CREATE TABLE `colaboradores` (
   `cpf` varchar(14) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `telefone` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `logradouro` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
   `cep` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `logradouro` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
   `numero` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `complemento` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
   `bairro` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -102,7 +102,7 @@ CREATE TABLE `colaboradores` (
   `estado` varchar(2) COLLATE utf8_unicode_ci DEFAULT NULL,
   `senha` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,7 +111,7 @@ CREATE TABLE `colaboradores` (
 
 LOCK TABLES `colaboradores` WRITE;
 /*!40000 ALTER TABLE `colaboradores` DISABLE KEYS */;
-INSERT INTO `colaboradores` VALUES (1,'afsdf','654654','fula@emai.com','64654','65asdf','55','asdf','sadf','asdf','df','asdfasdf'),(3,'Luciano','64654564','luciano@email.com','64654654','qqq','55','asdf','aa','asd','DF','81dc9bdb52d04dc20036dbd8313ed055'),(4,'Teste Tutor','ikhkjhjkh','mozartcomart@gmail.com','61991254154','asdf','33','sadfa','Teste','Brasília','DF','912ec803b2ce49e4a541068d495ab570');
+INSERT INTO `colaboradores` VALUES (1,'afsdf','654654','fula@emai.com','64654',NULL,'65asdf','55','asdf','sadf','asdf','df','asdfasdf'),(3,'Luciano','64654564','luciano@email.com','64654654',NULL,'qqq','55','asdf','aa','asd','DF','81dc9bdb52d04dc20036dbd8313ed055'),(4,'Teste Tutor','ikhkjhjkh','mozartcomart@gmail.com','61991254154',NULL,'asdf','33','sadfa','Teste','Brasília','DF','912ec803b2ce49e4a541068d495ab570'),(5,'Teste','014.465.181-59','mozart@gmail.com','(99) 99999-9999','71919-360','Rua 37','234','','Norte (Águas Claras)','Brasília','DF','81dc9bdb52d04dc20036dbd8313ed055');
 /*!40000 ALTER TABLE `colaboradores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -141,7 +141,7 @@ CREATE TABLE `fornecedores` (
   PRIMARY KEY (`id`),
   KEY `fk_fornecedores_colaboradores1_idx` (`usuario_id`),
   CONSTRAINT `fk_fornecedores_colaboradores1` FOREIGN KEY (`usuario_id`) REFERENCES `colaboradores` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,7 +150,7 @@ CREATE TABLE `fornecedores` (
 
 LOCK TABLES `fornecedores` WRITE;
 /*!40000 ALTER TABLE `fornecedores` DISABLE KEYS */;
-INSERT INTO `fornecedores` VALUES (1,'asdf','asdf','65.444.444/4444-44','teste@mail.com','(55) 55555-5555','asdfaf','Rua São Bento','555','de 320 ao fim - lado par','Centro','São Paulo','SP',1),(2,'asdfads','asdfads','11.111.111/1111-11','hml@asdf.com','(66) 66666-6666','asdf','Rua 37','555','asd','Norte (Águas Claras)','Brasília','DF',1);
+INSERT INTO `fornecedores` VALUES (1,'asdf','asdf','65.444.444/4444-44','teste@mail.com','(55) 55555-5555','asdfaf',NULL,'Rua São Bento','555','de 320 ao fim - lado par','Centro','São Paulo','SP',1),(2,'asdfads','asdfads','11.111.111/1111-11','hml@asdf.com','(66) 66666-6666','asdf',NULL,'Rua 37','555','asd','Norte (Águas Claras)','Brasília','DF',1),(3,'Teste','Teste','65.465.465/4654-65','f@mail.com','(61) 61616-1616','Mozart','71919-360','Rua 37','234','asdf','Norte (Águas Claras)','Brasília','DF',1);
 /*!40000 ALTER TABLE `fornecedores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -291,4 +291,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-28 19:27:37
+-- Dump completed on 2020-10-28 19:42:42

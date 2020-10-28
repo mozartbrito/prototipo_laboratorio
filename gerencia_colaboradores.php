@@ -70,7 +70,6 @@ if(isset($_GET['id']) && $acao == 'deletar') {
 			senha) 
 			VALUES
 			('$nome', '$cpf', '$email', '$telefone', '$cep','$logradouro','$numero', '$complemento', '$bairro', '$cidade', '$estado', '$senha');";
-			echo $sql; exit;
 
 
 	mysqli_query($conexao, $sql);
