@@ -92,7 +92,7 @@ CREATE TABLE `colaboradores` (
   `nome` varchar(75) COLLATE utf8_unicode_ci NOT NULL,
   `cpf` varchar(14) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `telefone` varchar(14) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `telefone` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `logradouro` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
   `cep` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `numero` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
