@@ -1,7 +1,7 @@
 <?php 
 include_once('bd/conexao.php');
 
-$sql = "SELECT * FROM categoria";
+$sql = "SELECT * FROM categoria WHERE tipo = 'Produtos'";
 $qr = mysqli_query($conexao, $sql);
 $categorias = mysqli_fetch_all($qr, MYSQLI_ASSOC);
 
@@ -48,7 +48,7 @@ include_once('layout/sidebar.php');
         <div class="row">
           <div class="col-md-4 col-sm-12 form-group">
             <label for="nome">Estoque</label>
-            <input type="text" name="estoque" placeholder="" class="form-control">
+            <input type="number" name="estoque" placeholder="" class="form-control">
               <input type="hidden" name="usuario_id" value="1" >   
           </div>
         </div>

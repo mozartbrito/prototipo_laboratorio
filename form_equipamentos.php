@@ -1,4 +1,9 @@
-<?php 
+<?php
+include_once('bd/conexao.php');
+$sql = "SELECT * FROM categoria WHERE tipo = 'Equipamentos'";
+$qr  = mysqli_query($conexao, $sql);
+$categorias = mysqli_fetch_all($qr, MYSQLI_ASSOC);
+
 include_once('layout/header.php');
 include_once('layout/menu.php');
 include_once('layout/sidebar.php');
@@ -17,7 +22,9 @@ include_once('layout/sidebar.php');
           <div class="col-md-6 col-sm-12 form-group">
             <label for="categoria_id">Categoria</label>
             <select class="form-control" name="categoria_id">
-              <option value="1">Categoria</option>
+              <?php foreach($categorias as $categoria): ?>
+                <option value="<?php echo $categoria['id'] ?>"><?php echo $categoria['categoria'] ?></option>
+              <?php endforeach; ?>
             </select>
           </div>
         </div>

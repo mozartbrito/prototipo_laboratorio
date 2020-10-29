@@ -37,12 +37,18 @@ if(isset($_GET['id']) && $acao == 'deletar') {
 			('$nome', '$categoria_id','$preco', '$data_compra','$codigo', 1);";
 
 
-	mysqli_query($conexao, $sql);
+	if(mysqli_query($conexao, $sql)) {
+		$mensagem = 'Salvo com sucesso!';
+		$alert = 'success';
+
+	}else {
+		$mensagem = 'Erro ao salvar: ' . mysqli_error($conexao);
+		$alert = 'danger';
+	}
 	
 
-	$mensagem = 'Salvo com sucesso!';
 
-	header("Location: equipamentos.php?mensagem={$mensagem}&alert=success");
+	header("Location: equipamentos.php?mensagem={$mensagem}&alert={$alert}");
 
 }
 

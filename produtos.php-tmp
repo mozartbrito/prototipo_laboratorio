@@ -6,7 +6,8 @@ include_once ('bd/conexao.php');
 //Monta a consulta a ser executada
 $sql = "SELECT p.*, c.categoria
         FROM produtos p
-        LEFT JOIN categoria c ON p.categoria_id = c.id";
+        LEFT JOIN categoria c ON p.categoria_id = c.id
+        WHERE c.tipo = 'Produtos'";
 
 //Execução da consulta ao banco de dados
 $qr = mysqli_query($conexao, $sql);

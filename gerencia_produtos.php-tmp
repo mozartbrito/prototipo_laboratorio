@@ -53,11 +53,16 @@ if (isset($_GET['id']) && $acao == 'deletar') {
 			('$codigo', '$nome', '$categoria_id', '$estoque', '$data_compra', '$usuario_id', $preco);
 ";
 
-	mysqli_query($conexao, $sql);
+	if (mysqli_query($conexao, $sql)) {
+		$mensagem = 'Salvo com sucesso!';
+		$alert    = 'success';
 
-	$mensagem = 'Salvo com sucesso!';
+	} else {
+		$mensagem = 'Erro ao salvar: '.mysqli_error($conexao);
+		$alert    = 'danger';
+	}
 
-	header("Location: produtos.php?mensagem={$mensagem}&alert=success");
+	header("Location: produtos.php?mensagem={$mensagem}&alert={$alert}");
 
 }
 

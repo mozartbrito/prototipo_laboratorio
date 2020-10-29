@@ -44,12 +44,16 @@ if(isset($_GET['id']) && $acao == 'deletar') {
 			('$razao', '$nome','$cnpj', '$email', '$telefone', '$nome_contato', '$cep','$logradouro','$numero', '$complemento', '$bairro', '$cidade', '$estado','1');";
 
 
-	mysqli_query($conexao, $sql);
-	
+	if(mysqli_query($conexao, $sql)) {
+		$mensagem = 'Salvo com sucesso!';
+		$alert = 'success';
 
-	$mensagem = 'Salvo com sucesso!';
+	}else {
+		$mensagem = 'Erro ao salvar: ' . mysqli_error($conexao);
+		$alert = 'danger';
+	}
 
-	header("Location: fornecedores.php?mensagem={$mensagem}&alert=success");
+	header("Location: fornecedores.php?mensagem={$mensagem}&alert={$alert}");
 
 }
 
