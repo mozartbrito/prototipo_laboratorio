@@ -44,10 +44,10 @@ $sql = "SELECT p.*, c.categoria FROM produtos p
               <a href="#" class="btn btn-secondary">
                 <i class="fas fa-eye"></i>
               </a>
-              <a href="#" class="btn btn-warning">
+              <a href="form_equipamentos.php?id=<?= $produto['id'] ?>" class="btn btn-warning">
                 <i class="fas fa-edit"></i>
               </a>
-              <a href="gerencia_equipamentos.php?id=<?php echo $produto['id']; ?>&acao=deletar" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir?')">
+              <a href="gerencia_equipamentos.php?id=<?= $produto['id']; ?>&acao=deletar" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir?')">
                 <i class="fas fa-trash"></i>
               </a>
             </td>
