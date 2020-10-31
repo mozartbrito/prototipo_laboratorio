@@ -119,17 +119,13 @@ include_once('layout/footer.php');
     .done(function(dados) {
       var dados_json = JSON.parse(dados);
       var tabela = `<table>`;
-
+      var texto = '';
       Object.keys(dados_json).forEach(function(k){
           var th = k.replace('_', ' ');
-          tabela += `<tr>
-                        <th style="text-transform: capitalize">${th}: </th>
-                        <td>${dados_json[k]}</td>
-                      </tr>`;
+          texto += `<p><strong style="text-transform: capitalize">${th}</strong>: ${dados_json[k] ?? ''}</p>`;
       });
-
-      tabela += `</table>`;
-      $('#corpo-modal').html(tabela);
+      $('#titulo-modal').html('Fornecedor: ' + dados_json.razao_social);
+      $('#corpo-modal').html(texto);
     })
     .fail(function() {
       alert('Informações não encontradas.');
