@@ -3,7 +3,8 @@ Deprecated: The each() function is deprecated. This message will be suppressed o
 <?php
 include_once ('bd/conexao.php');
 
-if (!isset($_POST['email']) || !isset($_POST['senha'])) {
+if ((!isset($_POST['email']) && $_POST['email'] != '')
+	 || (!isset($_POST['senha'])) && $_POST['senha'] != '') {
 	$data['mensagem'] = 'Email e senha são obrigatórios.';
 	$data['alert']    = 'danger';
 	http_response_code(400);
@@ -14,20 +15,15 @@ if (!isset($_POST['email']) || !isset($_POST['senha'])) {
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
-if ($email == '' || $senha == '') {
-	$data['mensagem'] = 'Email e senha são obrigatórios.';
-	$data['alert']    = 'danger';
-	http_response_code(400);
-	echo json_encode($data);
-	exit;
-}
+$sql = "SELECT id, nome, email, senha, cpf
+		FROM colaboradores
+		WHERE email = '{$email}'";
 
-$sql     = "SELECT id, nome, email, senha, cpf  FROM colaboradores WHERE email = '{$email}'";
 $qr      = mysqli_query($conexao, $sql);
 $usuario = mysqli_fetch_assoc($qr);
 
 if ($usuario == null) {
-	$data['mensagem'] = 'Usuário ou senha incorretos.';
+	$data['mensagem'] = 'Usuário não econtrado, verifique o email ou senha.';
 	$data['alert']    = 'danger';
 	http_response_code(401);
 	echo json_encode($data);

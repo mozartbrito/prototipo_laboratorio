@@ -13,14 +13,21 @@ include_once('layout/header.php');
      				<h3>Área restrita</h3>
      			<div class="card-body">
      				<div class="mensagem" style="display: none;"></div>
+
      				<form id="form-login" method="post" onsubmit="return false;">
      					<div class="form-group">
      						<label for="email">E-mail:</label>
-     						<input type="text" name="email" id="email" class="form-control">
+     						<input type="text" name="email" id="email" class="form-control " >
+     						<div class="invalid-feedback" id="email-invalid" style="display: none;">
+					          E-mail obrigatório.
+					        </div>
      					</div>
      					<div class="form-group">
      						<label for="senha">Senha:</label>
-     						<input type="password" name="senha" id="senha" class="form-control">
+     						<input type="password" name="senha" id="senha" class="form-control " >
+     						<div class="invalid-feedback" id="senha-invalid" style="display: none;">
+					          Senha obrigatória.
+					        </div>
      					</div>
      					<div class="form-group">
      						
@@ -45,9 +52,16 @@ include_once('layout/footer.php');
 		var email = $("#email").val();
 		var senha = $("#senha").val();
 
-		if(email == '' || senha == '') {
-			alert('E-mail e senha são obrigatórios');
+		if(email == ''){
+			$('#email-invalid').show();
+			$("#email").addClass('is-invalid');
+		}else if(senha == '') {
+			$('#email-invalid').hide();
+			$("#email").removeClass('is-invalid');
+			$("#senha").addClass('is-invalid');
+			$('#senha-invalid').show();
 		} else {
+			
 			$.ajax({
 				url: 'gerencia_login.php',
 				type: 'POST',
@@ -75,8 +89,6 @@ include_once('layout/footer.php');
 				$("#senha").val('');
 				$("#email").focus();
 				$('#carregando').fadeOut();
-			})
-			.always(function() {
 			});
 			
 		}

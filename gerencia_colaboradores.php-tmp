@@ -24,7 +24,7 @@ if (isset($_GET['id']) && $acao == 'deletar') {
 	header("Location: colaboradores.php?mensagem={$mensagem}&alert={$alert}");
 } else if ($acao == 'salvar') {
 
-	$senha = password_hash($_POST['senha'], PASSWORD_BCRYPT);
+	$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 	/*if (password_verify('12345', $hash)) {
 	echo 'Password is valid!';
 	} else {
