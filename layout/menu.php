@@ -42,6 +42,22 @@
         </li>
 
       </ul>
+      <div class="profile">
+        <div class="dropdown">
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="img/avatar.jpg" alt="">
+            
+            <?php echo $_SESSION['nome']; ?>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">Alguma ação</a>
+            <a class="dropdown-item" href="#">Outra ação</a>
+            <a class="dropdown-item" href="gerencia_logout.php">Sair</a>
+          </div>
+        </div>
+        
+      </div>
       <form action="" class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" name="pesquisa" placeholder="Pesquisar" aria-label="Pesquisar" value="<?php echo (isset($_GET['pesquisa']) && $_GET['pesquisa'] != '' ? $_GET['pesquisa'] : ''); ?>" autofocus>
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
@@ -52,20 +68,7 @@
         </a>
       </form>
 
-      <div class="profile">
-        <div class="dropdown">
-          <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="img/avatar.jpg" alt="">
-          </a>
-
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="#">Alguma ação</a>
-            <a class="dropdown-item" href="#">Outra ação</a>
-            <a class="dropdown-item" href="#">Sair</a>
-          </div>
-        </div>
-        
-      </div>
+      
     </div>
     </div>
     </div>
