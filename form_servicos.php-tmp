@@ -1,26 +1,25 @@
-<?php 
-include_once('bd/conexao.php');
 
-$sql = "SELECT * FROM categoria WHERE tipo = 'Serviços'";
-$qr = mysqli_query($conexao, $sql);
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\trazo\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 54
+<?php
+include_once ('bd/conexao.php');
+
+$sql        = "SELECT * FROM categoria WHERE tipo = 'Serviços'";
+$qr         = mysqli_query($conexao, $sql);
 $categorias = mysqli_fetch_all($qr, MYSQLI_ASSOC);
 
-
-if(isset($_GET['id']) && $_GET['id'] != '') {
-  $sql_servico = "SELECT * FROM servicos WHERE id = " . $_GET['id'];
-  $qr_servico = mysqli_query($conexao, $sql_servico);
-  $servico = mysqli_fetch_assoc($qr_servico);
+if (isset($_GET['id']) && $_GET['id'] != '') {
+	$sql_servico = "SELECT * FROM servicos WHERE id = ".$_GET['id'];
+	$qr_servico  = mysqli_query($conexao, $sql_servico);
+	$servico     = mysqli_fetch_assoc($qr_servico);
 } else {
-  $servico = '';
+	$servico = '';
 }
 
-
-include_once('layout/header.php');
-include_once('layout/menu.php');
-include_once('layout/sidebar.php');
- ?>
-
- <div class="col">
+include_once ('layout/header.php');
+include_once ('layout/menu.php');
+include_once ('layout/sidebar.php');
+?>
+<div class="col">
 <h2>Novo Serviço</h2>
       <div class="card">
         <div class="card-body">
@@ -62,9 +61,9 @@ include_once('layout/sidebar.php');
                    <option value="1">Coleta</option>
                    <option value="5">Exames</option>
                  </select>
-              <input type="hidden" name="usuario_id" id="id" class="form-control">   
+              <input type="hidden" name="usuario_id" id="id" class="form-control">
                </div>
-             </div> 
+             </div>
            </div>
 
            <div class="row">
@@ -79,7 +78,7 @@ include_once('layout/sidebar.php');
         </div>
       </div>
     </div>
- <?php include_once('layout/footer.php');
+<?php include_once ('layout/footer.php');
 ?>
 <script>
   $(document).ready(function() {

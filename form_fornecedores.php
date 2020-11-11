@@ -153,6 +153,19 @@ include_once('layout/footer.php');
     })
     .done(function(data) {
       $('#id').val(data.dados.id);
+      $('#cnpj').val(data.dados.cnpj);
+      $('#fantasia').val(data.dados.fantasia);
+      $('#razao_social').val(data.dados.razao_social);
+      $('#telefone').val(data.dados.telefone);
+      $('#email').val(data.dados.email);
+      $('#nome_contato').val(data.dados.nome_contato);
+      $('#cep').val(data.dados.cep);
+      $('#numero').val(data.dados.numero);
+      $('#complemento').val(data.dados.complemento);
+      $('#bairro').val(data.dados.bairro);
+      $('#cidade').val(data.dados.cidade);
+      $('#estado').val(data.dados.estado);
+      $('#logradouro').val(data.dados.logradouro);
       $('#mensagem').html(retornaMensagemAlert(data.mensagem, data.alert));
     })
     .fail(function(data) {
