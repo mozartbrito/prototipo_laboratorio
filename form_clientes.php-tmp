@@ -1,8 +1,10 @@
-<?php 
-include_once('layout/header.php');
-include_once('layout/menu.php');
-include_once('layout/sidebar.php');
-include_once('bd/estados.php');
+
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\trazo\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 54
+<?php
+include_once ('layout/header.php');
+include_once ('layout/menu.php');
+include_once ('layout/sidebar.php');
+include_once ('bd/estados.php');
 ?>
 <div class="col">
   <h2>Novo cliente</h2>
@@ -118,8 +120,8 @@ include_once('bd/estados.php');
     </div>
   </div>
 </div>
-<?php 
-include_once('layout/footer.php');
+<?php
+include_once ('layout/footer.php');
 ?>
 <script src="js/estados.js" type="text/javascript"></script>
 <script>
@@ -131,7 +133,7 @@ include_once('layout/footer.php');
 
     var laco_estados = '';
     $.each(estados,function(index, el) {
-        laco_estados += `<option value="${el.sigla}">${el.sigla}</option>`; 
+        laco_estados += `<option value="${el.sigla}">${el.sigla}</option>`;
     });
     $('#estado').append(laco_estados);
 
@@ -162,7 +164,7 @@ include_once('layout/footer.php');
       $('#cidade').val(data.dados.cidade);
       $('#estado').val(data.dados.estado);
       $('#mensagem').html(retornaMensagemAlert(data.mensagem, data.alert));
-      
+
     })
     .fail(function(data) {
       $('#mensagem').html(retornaMensagemAlert(data.responseJSON.mensagem, data.responseJSON.alert));
@@ -188,7 +190,7 @@ include_once('layout/footer.php');
     var bairro = $('#bairro').val();
     var cidade = $('#cidade').val();
     var estado = $('#estado').val();
-    
+
 
     if(nome == '' || cpf == '' || email == '') {
       alert('Nome, CPF e E-mail são obrigatórios!');
