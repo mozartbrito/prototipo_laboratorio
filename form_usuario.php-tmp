@@ -1,13 +1,15 @@
-<?php 
-include_once('layout/header.php');
-include_once('layout/menu.php');
-include_once('layout/sidebar.php');
-include_once('bd/estados.php');
- ?>
+
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\trazo\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 54
+<?php
+include_once ('layout/header.php');
+include_once ('layout/menu.php');
+include_once ('layout/sidebar.php');
+include_once ('bd/estados.php');
+?>
 <div class="col">
    <h2>Novo Usuário</h2>
-   <?php include_once('layout/mensagens.php'); ?>
-  <div class="card">
+<?php include_once ('layout/mensagens.php');?>
+<div class="card">
     <div class="card-body">
      <form method="post" onsubmit="return false">
      <h5 id="">Dados de Login</h5>
@@ -35,7 +37,7 @@ include_once('bd/estados.php');
         </div>
       </div>
       <hr>
-        
+
       <h5 id="">Dados pessoais</h5>
       <br />
        <div class="row">
@@ -67,10 +69,10 @@ include_once('bd/estados.php');
            </div>
          </div>
        </div>
-       
+
 
        <div class="row">
-         
+
          <div class="col-md-8 col-sm-12">
            <div class="form-group">
              <label for="logradouro">Logradouro:</label>
@@ -126,9 +128,9 @@ include_once('bd/estados.php');
     </div>
   </div>
 </div>
-<?php 
-include_once('layout/footer.php');
- ?>
+<?php
+include_once ('layout/footer.php');
+?>
  <script src="js/estados.js" type="text/javascript"></script>
  <script>
    $(document).ready(function(){
@@ -139,7 +141,7 @@ include_once('layout/footer.php');
 
     var laco_estados = '';
     $.each(estados,function(index, el) {
-        laco_estados += `<option value="${el.sigla}">${el.sigla}</option>`; 
+        laco_estados += `<option value="${el.sigla}">${el.sigla}</option>`;
     });
     $('#estado').append(laco_estados);
    })

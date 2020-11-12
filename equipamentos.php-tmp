@@ -1,14 +1,15 @@
-<?php 
-include_once('layout/header.php');
-include_once('layout/menu.php');
-include_once('layout/sidebar.php');
+
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\trazo\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 54
+<?php
+include_once ('layout/header.php');
+include_once ('layout/menu.php');
+include_once ('layout/sidebar.php');
 ?>
 <div class="col">
   <h2 class="titulo">Equipamentos</h2>
   <div class="clear"></div>
-  <?php include_once('layout/mensagens.php'); ?>
-
-  <div class="card">
+<?php include_once ('layout/mensagens.php');?>
+<div class="card">
     <div class="card-body">
       <a href="form_equipamentos.php" class="btn btn-primary" style="float: right">
         <i class="fas fa-cart-plus"></i> Novo equipamentos
@@ -29,7 +30,7 @@ include_once('layout/sidebar.php');
           </tr>
         </thead>
         <tbody>
-        </tbody>  
+        </tbody>
       </table>
       <div class="alert alert-info" id="mensagem-vazio" style="display: none;">Nenhuma informação encontrada.</div>
        <nav aria-label="Navegação de página exemplo" class="pagination">
@@ -41,12 +42,12 @@ include_once('layout/sidebar.php');
           <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
         </ul>
       </nav>
-      
+
     </div>
   </div>
 </div>
-<?php 
-  include_once('layout/footer.php');
+<?php
+include_once ('layout/footer.php');
 ?>
 <script>
   var algumacoisa
@@ -79,7 +80,7 @@ include_once('layout/sidebar.php');
     .always(function() {
       $('#carregando').fadeOut();
     });
-    
+
   }
 
   function deletarDados(id) {
@@ -105,7 +106,7 @@ include_once('layout/sidebar.php');
         $('#carregando').fadeOut();
       });
     }
-      
+
   }
   function carregaDados() {
     $.ajax({
@@ -128,7 +129,7 @@ include_once('layout/sidebar.php');
                   <td>${value.nome}</td>
                   <td>${value.categoria}</td>
                   <td>${value.data_compra}</td>
-                
+
                   <td>
                     <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#modalVerDados" onclick="verDados(${value.id})">
                       <i class="fas fa-eye"></i>
@@ -151,6 +152,6 @@ include_once('layout/sidebar.php');
     .always(function() {
       $('#carregando').fadeOut();
     });
-    
+
   }
 </script>

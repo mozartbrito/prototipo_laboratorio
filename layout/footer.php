@@ -169,6 +169,27 @@
               </div>`;
     }
 
+    function carregaCategorias(tipo) {
+      $.ajax({
+        url: `api/categorias.php?acao=listar&tipo=${tipo}`,
+        type: 'GET',
+        dataType: 'json',
+        beforeSend: function() {
+          $('#escolha_categoria').text('Carregando...');
+        }
+      })
+      .done(function(data) {
+        $.each(data.dados, function(index, categoria) {
+            $('#escolha_categoria').text('Escolha');
+           $('#categoria_id').append($('<option>', {value: categoria.id, text: categoria.categoria }));
+        });
+      })
+      .fail(function() {
+        console.log("Erro ao carregar as categorias.");
+      });
+      
+    }
+
     </script>
   </body>
 </html>
