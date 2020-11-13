@@ -1,21 +1,36 @@
 
 Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\trazo\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 54
 <?php
+include_once ('bd/conexao.php');
+
+$sql        = "SELECT * FROM categoria WHERE tipo = 'Produtos'";
+$qr         = mysqli_query($conexao, $sql);
+$categorias = mysqli_fetch_all($qr, MYSQLI_ASSOC);
+
+if (isset($_GET['id']) && $_GET['id'] != '') {
+	$sql_produto = "SELECT * FROM produtos WHERE id = ".$_GET['id'];
+	$qr_produto  = mysqli_query($conexao, $sql_produto);
+	$produto     = mysqli_fetch_assoc($qr_produto);
+} else {
+	$produto = '';
+}
+
 include_once ('layout/header.php');
 include_once ('layout/menu.php');
 include_once ('layout/sidebar.php');
 ?>
 <div class="col">
-  <h2>Novo equipamento</h2>
+  <h2>Novo Produto</h2>
   <div class="card">
     <div class="card-body">
+      <span id="mensagem"></span>
       <form method="post" onsubmit="return false;">
-
         <div class="row">
           <div class="col-md-6 col-sm-12 form-group">
-            <label for="codigo">Codigo</label>
-            <input type="text" name="codigo" placeholder="Informe o codigo do Produto" class="form-control" id="codigo">
-            <input type="hidden" name="id" id="id">
+            <label for="codigo">Codigo*</label>
+            <input type="text" name="codigo" id= "codigo" class="form-control">
+
+            <input type="hidden" name="id" id="id" placeholder="">
           </div>
           <div class="col-md-6 col-sm-12 form-group">
             <label for="categoria_id">Categoria</label>
@@ -26,22 +41,30 @@ include_once ('layout/sidebar.php');
         </div>
         <div class="row">
           <div class="col-md-4 col-sm-12 form-group">
-            <label for="nome">Nome</label>
-            <input type="text" name="nome" placeholder="informe o nome do Produto" class="form-control" id="nome">
+            <label for="nome">Nome*</label>
+            <input type="text" name="nome" class="form-control" id="nome">
           </div>
           <div class="col-md-4 col-sm-12 form-group">
-            <label for="preco">Preço</label>
-            <input type="text" name="preco" placeholder="Informe o preço do produto" class="form-control moeda" id="preco">
+            <label for="preco">Preço*</label>
+            <input type="text" name="preco" id="preco" class="form-control moeda">
           </div>
           <div class="col-md-4 col-sm-12 form-group">
             <label for="data_compra">Data de compra</label>
-            <input type="date" name="data_compra" class="form-control" id="data_compra" readonly id="data_compra">
+            <input type="date" name="data_compra" class="form-control" id="data_compra" readonly>
           </div>
         </div>
         <div class="row">
-         <div class="col">
-            <button class="btn btn-primary" onclick="salvarDados()"><i class="fas fa-save"></i> Salvar</button>
+          <div class="col-md-4 col-sm-12 form-group">
+            <label for="nome">Estoque*</label>
+            <input type="number" name="estoque" id="estoque" class="form-control">
+              <input type="hidden" name="usuario_id" id="id" class="form-control">
+          </div>
+        </div>
 
+        <div class="row">
+         <div class="col">
+           <button class="btn btn-primary" onclick="salvarDados()">
+            <i class="fas fa-save"></i> Salvar</button>
          </div>
 
         </div>
@@ -55,35 +78,37 @@ include_once ('layout/sidebar.php');
 <?php
 include_once ('layout/footer.php');
 ?>
-<script>
+ <script>
   $(document).ready(function() {
     let procuraParametro = new URLSearchParams(window.location.search);
 
-    carregaCategorias('Equipamentos');
+    carregaCategorias('Produtos');
 
-    if(procuraParametro.has('id') && procuraParametro.get('id') != '') {
-      carregaDados(procuraParametro.get('id'));
-    }
-
+    if (procuraParametro.has('id') &&
+      procuraParametro.get('id') != '') {
+    carregaDados(procuraParametro.get('id'));
+   }
   })
-
   function carregaDados(id) {
     $.ajax({
-      url: 'api/equipamentos.php?acao=exibir&id=' + id,
+      url: 'api/produtos.php?acao=exibir&id=' + id,
       type: 'GET',
       dataType: 'json',
       beforeSend: function() {
         $('#carregando').fadeIn();
       }
     })
+
     .done(function(data) {
       $('#id').val(data.dados.id);
-      $('#nome').val(data.dados.nome);
       $('#codigo').val(data.dados.codigo);
       $('#categoria_id').val(data.dados.categoria_id);
+      $('#nome').val(data.dados.nome);
       let preco = data.dados.preco.replace('.',',');
       $('#preco').val(preco);
       $('#data_compra').val(data.dados.data_compra.substring(0,10));
+      $('#estoque').val(data.dados.estoque);
+      $('#usuario_id').val(data.dados.usuario_id);
       $('#mensagem').html(retornaMensagemAlert(data.mensagem, data.alert));
     })
     .fail(function(data) {
@@ -96,30 +121,32 @@ include_once ('layout/footer.php');
   }
   function salvarDados() {
     var id = $('#id').val();
-    var nome = $('#nome').val();
     var codigo = $('#codigo').val();
     var categoria_id = $('#categoria_id').val();
+    var nome = $('#nome').val();
     var preco = $('#preco').val();
     var data_compra = $('#data_compra').val();
+    var estoque = $('#estoque').val();
+    var usuario_id = '<?php echo $_SESSION['id_usuario'];?>';
 
-    if(nome == '' || codigo == '') {
-      alert('Nome e Codigo são obrigatórios!');
+
+    if (codigo == '' || nome == '' || preco == '' || estoque == '') {
+      alert('Código, nome,preço, data de compra e estoque são obrigatórios!!');
       $('#codigo').focus();
       return false;
     }
 
     $.ajax({
-      url: 'api/equipamentos.php?acao=salvar',
+      url: 'api/produtos.php?acao=salvar',
       type: 'POST',
       dataType: 'json',
-      data: {nome: nome, codigo: codigo, id: id, preco: preco, data_compra: data_compra, categoria_id: categoria_id, },
+      data: {codigo: codigo, categoria_id: categoria_id, nome: nome, preco: preco, data_compra: data_compra,estoque: estoque, usuario_id:usuario_id, id: id },
       beforeSend: function(){
         $('#carregando').fadeIn();
       }
     })
     .done(function(data) {
       $('#id').val(data.dados.id);
-      $('#data_compra').val(data.dados.data_compra.substring(0,10));
       $('#mensagem').html(retornaMensagemAlert(data.mensagem, data.alert));
       console.log(data);
     })

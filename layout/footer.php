@@ -37,6 +37,7 @@
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery.maskedinput.js"></script>
+    <script src="js/jquery.maskMoney.js"></script>
     <script>
       $('#toggle').click(function() {
         $('#sidebar').toggle('slide');
@@ -49,6 +50,7 @@
       $('.cnpj').mask('99.999.999/9999-99');
       $('.fone').mask('(99) 99999-9999');
       $('.cep').mask('99999-999');
+      $('.moeda').maskMoney({thousands:'.', decimal:',', allowZero:false});
 
       <?php if(isset($_GET['mensagem'])): ?>
         setTimeout(function(){

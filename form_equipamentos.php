@@ -29,7 +29,7 @@ include_once('layout/sidebar.php');
           </div>
           <div class="col-md-4 col-sm-12 form-group">
             <label for="preco">Preço</label>
-            <input type="number" step="0.01" min="0.01" name="preco" placeholder="informe o Preço do Produto" class="form-control" id="preco">
+            <input type="text" name="preco" placeholder="Informe o preço do produto" class="form-control moeda" id="preco">
           </div>
           <div class="col-md-4 col-sm-12 form-group">
             <label for="data_compra">Data de compra</label>
@@ -79,7 +79,8 @@ include_once('layout/footer.php');
       $('#nome').val(data.dados.nome);
       $('#codigo').val(data.dados.codigo);
       $('#categoria_id').val(data.dados.categoria_id);
-      $('#preco').val(data.dados.preco);
+      let preco = data.dados.preco.replace('.',',');
+      $('#preco').val(preco);
       $('#data_compra').val(data.dados.data_compra.substring(0,10));
       $('#mensagem').html(retornaMensagemAlert(data.mensagem, data.alert));
     })

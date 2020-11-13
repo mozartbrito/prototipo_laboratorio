@@ -1,11 +1,13 @@
-<?php 
-include_once('bd/conexao.php');
+
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\trazo\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 54
+<?php
+include_once ('bd/conexao.php');
 
 //Monta a consulta a ser executada
 if (isset($_GET['pesquisa']) && $_GET['pesquisa'] != '') {
-  $pesquisa = $_GET['pesquisa'];
+	$pesquisa = $_GET['pesquisa'];
 
-  $sql = "SELECT p.*, c.categoria  FROM produtos p 
+	$sql = "SELECT p.*, c.categoria  FROM produtos p
           LEFT JOIN categoria c ON p.categoria_id = c.id
           WHERE c.tipo = 'Produtos'
           AND (p.codigo LIKE '%{$pesquisa}%'
@@ -15,9 +17,9 @@ if (isset($_GET['pesquisa']) && $_GET['pesquisa'] != '') {
           OR p.data_compra LIKE '%{$pesquisa}%'
           OR p.preco LIKE '%{$pesquisa}%')";
 
-}else {
-  $sql = "SELECT p.*, c.categoria 
-        FROM produtos p 
+} else {
+	$sql = "SELECT p.*, c.categoria
+        FROM produtos p
         LEFT JOIN categoria c ON p.categoria_id = c.id
         WHERE c.tipo = 'Produtos'";
 }
@@ -28,9 +30,9 @@ $qr = mysqli_query($conexao, $sql);
 //Armazenando o resultado em uma variável
 $produtos = mysqli_fetch_all($qr, MYSQLI_ASSOC);
 
-include_once('layout/header.php');
-include_once('layout/menu.php');
-include_once('layout/sidebar.php');
+include_once ('layout/header.php');
+include_once ('layout/menu.php');
+include_once ('layout/sidebar.php');
 ?>
 
 <div class="col">
@@ -38,9 +40,8 @@ include_once('layout/sidebar.php');
   <span class="badge badge-info totais">Total: <span id="total"></span> <?php //echo count($produtos); ?></span>
 <div class="clear"></div>
 
-  <?php include_once('layout/mensagens.php'); ?>
-
-  <div class="card">
+<?php include_once ('layout/mensagens.php');?>
+<div class="card">
     <div class="card-body">
       <span id="mensagem"></span>
       <a href="javascript: carregaDados(1)" class="btn btn-outline-secondary" style="float: left">
@@ -84,11 +85,11 @@ include_once('layout/sidebar.php');
           <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
         </ul>
       </nav>
-      
+
     </div>
   </div>
 </div>
-<?php include_once('layout/footer.php'); ?>
+<?php include_once ('layout/footer.php');?>
 
 <script>
   $(document).ready(function(){
@@ -111,7 +112,7 @@ include_once('layout/sidebar.php');
       var texto = '';
       Object.keys(data.dados).forEach(function(index){
           var th = index.replace('_', ' ');
-          texto += `<p><strong style="text-transform: capitalize">${th}</strong>: ${data.dados[index] ?? ''}</p>`; 
+          texto += `<p><strong style="text-transform: capitalize">${th}</strong>: ${data.dados[index] ?? ''}</p>`;
       });
 
       $('#titulo-modal').html('Produtos: ' + data.dados.nome);

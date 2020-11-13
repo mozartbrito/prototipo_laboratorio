@@ -73,6 +73,8 @@ if(isset($_GET['id']) && $acao == 'deletar' && $metodo == 'DELETE') {
 	$nome = $_POST['nome'];
 	$categoria_id = $_POST['categoria_id'];
 	$preco = $_POST['preco'];
+	$preco = str_replace(['.',','], ['','.'], $preco);
+	
 	$codigo = $_POST['codigo'];
 	$data_compra = date('Y-m-d H:m:i');
 	$id = $_POST['id'];
