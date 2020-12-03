@@ -8,7 +8,7 @@
 //React, VUEjs, Angular -> Typescript -> tipar variáveis e trabalhar com OO como outras linguagens
 //transpiler -> converte o typescript em um script legível para o navegador
 //Joao
-const joao = {
+/*const joao = {
 	nome: 'João',
 	sobrenome: 'Silva',
 	idade: 32
@@ -18,7 +18,26 @@ const maria = {
 	sobrenome: 'Assis',
 	idade: 41
 }
+joao.nome = 'Joao Souza';*/
 
-joao.nome = 'Joao Souza';
 
-console.log(joao.nome)
+const objeto = {
+	nome: "Computador",
+	tamanhoW: 45,
+	tamanhoH: 180,
+	componentes: [
+		{ descricao: 'Mouse' },
+		{ descricao: 'Teclado' },
+		{ descricao: 'Monitor'}
+	],
+	processar: (parametro1, parametro2) => {
+		let soma = parametro1 + parametro2
+		return soma
+	}
+};
+//objeto.nome
+// console.log(objeto.componentes)
+// objeto.componentes.push({descricao: 'Processador i7'})
+// console.log(objeto.componentes)
+var texto = "Aula maneira 2";
+console.log(texto.toLocaleLowerCase().split("a"))
